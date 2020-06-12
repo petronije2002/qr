@@ -1,1 +1,17 @@
-<h1> app component</h1>
+<div class="container">
+
+  <div class="content">
+    <app-menu class="header123"></app-menu>
+</div>
+
+  <footer class="footer123" fxLayout="row">
+
+    <div  fxFlex><a mat-button fxFlex><mat-icon>done_all</mat-icon></a></div>
+        <div  fxFlex><a mat-button fxFlex (click)="openSnackBar('Call Service?', 'OK')"><mat-icon>emoji_people</mat-icon></a></div>
+
+  </footer>
+
+</div>
+
+
+

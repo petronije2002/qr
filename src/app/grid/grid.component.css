@@ -1,0 +1,53 @@
+
+.mat-grid-tile {
+
+  background-color: rgb(190, 187, 187);
+}
+.mat-grid-tile-header{
+  background-color: black;
+}
+.mat-grid-tile {
+  border: solid 2px #000;
+
+}
+
+.image{
+  padding-top: 60px;
+  margin-left: 1%;
+  margin-right: 1%;
+
+}
+
+.header{
+  height: 45px !important;
+  max-height: 45px !important;
+  opacity: 70% !important ;
+  background-color: rgb(8, 8, 8) !important;
+
+}
+
+.footer{
+  height: fit-content !important;
+  max-height: 20% !important;
+  opacity: 70% !important ;
+  background-color: rgb(68, 66, 64) !important;
+}
+
+
+.title{
+  padding-right: 30px ;
+}
+
+
+img{
+
+
+
+  height: 100%;
+
+}
+
+.img1{
+  background-size: cover;
+  background-position: center center;
+}
