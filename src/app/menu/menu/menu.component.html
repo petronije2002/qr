@@ -1,37 +1,54 @@
-<mat-toolbar color="primary" class="navbar">
-  <mat-toolbar-row>
+<mat-toolbar color="primary" class="navbar" >
+  <mat-toolbar-row fxFlexLayout="row" fxFlexAlign="start center">
 
-    <button mat-button [matMenuTriggerFor]="belowMenu">Menu</button>
+    <div fxFlex="50">
 
-    <mat-menu #belowMenu="matMenu" yPosition="below">
-      <button mat-menu-item routerLink='/grid' routerLinkActive="active">Shopping</button>
-      <button mat-menu-item routerLink='' routerLinkActive="active" > Create Sections</button>
-      <button mat-menu-item routerLink='' routerLinkActive="active"  >Create Menu</button>
-      <button mat-menu-item routerLink='' routerLinkActive="active"  >Menu Builder</button>
+      <button mat-button [matMenuTriggerFor]="belowMenu">Menu</button>
 
-    </mat-menu>
+      <mat-menu #belowMenu="matMenu" yPosition="below">
+        <button mat-menu-item routerLink='/grid' routerLinkActive="active">Shopping</button>
+        <button mat-menu-item routerLink='' routerLinkActive="active"> Create Sections</button>
+        <button mat-menu-item routerLink='' routerLinkActive="active">Create Menu</button>
+        <button mat-menu-item routerLink='' routerLinkActive="active">Menu Builder</button>
+
+      </mat-menu>
 
 
-    <button mat-button [matMenuTriggerFor]="beforeMenu"  >Preview</button>
 
-    <mat-menu #beforeMenu="matMenu" xPosition="before">
-      <button mat-menu-item routerLink='/previewMenu' routerLinkActive="active" >Preview menu</button>
-      <button mat-menu-item>2</button>
-    </mat-menu>
-    <button mat-button [matMenuTriggerFor]="afterMenu">After</button>
 
-    <mat-menu #afterMenu="matMenu" xPosition="after">
-      <button mat-menu-item>Item 1</button>
-      <button mat-menu-item>Item 2</button>
-    </mat-menu>
 
-    <mat-icon matBadge="{{nubmerOfCartItems}}" matBadgeColor="warn">add_shopping_cart</mat-icon>
+      <button mat-button [matMenuTriggerFor]="beforeMenu">Preview</button>
+
+      <mat-menu #beforeMenu="matMenu" xPosition="before">
+        <button mat-menu-item routerLink='/previewMenu' routerLinkActive="active">Preview menu</button>
+        <button mat-menu-item>2</button>
+      </mat-menu>
+
+    </div>
+
+        <!-- <mat-icon  matBadge="{{nubmerOfCartItems}}" matBadgeColor="warn">add_shopping_cart</mat-icon> -->
+
+
+        <div  ><a fxFlex  mat-button  (click)="router.navigate(['/cart-view']);"    ><mat-icon  matBadge="{{nubmerOfCartItems}}"   matBadgeSize="medium"  matBadgeColor="primary" >add_shopping_cart</mat-icon></a></div>
+
+
+
+        <div  ><a  fxFlex mat-button    ><mat-icon matBadge="{{numberOfWishListItems}}"   matBadgeSize="medium"  matBadgeColor="warn">favorite</mat-icon></a></div>
+
+
+
+
+      <!-- <div fxFlex>
+        <mat-icon   matBadge="{{numberOfWishListItems}}" matBadgeColor="warn">favorite</mat-icon>
+
+
+      </div> -->
+
+
+
 
   </mat-toolbar-row>
 </mat-toolbar>
 <div>
   <router-outlet></router-outlet>
 </div>
-
-
-

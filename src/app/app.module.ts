@@ -8,13 +8,19 @@ import  { MaterialModule } from './../app/material/material.module';
 import { GridComponent } from './grid/grid.component'
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MenuComponent } from './menu/menu/menu.component';
+import { ProductViewComponent } from './product-view/product-view.component';
+import { CartViewComponent } from './cart-view/cart-view.component';
+import { WishListViewComponent } from './wish-list-view/wish-list-view.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     GridComponent,
-    MenuComponent
+    MenuComponent,
+    ProductViewComponent,
+    CartViewComponent,
+    WishListViewComponent
   ],
   imports: [
     FlexLayoutModule,

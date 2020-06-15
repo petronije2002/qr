@@ -1,12 +1,15 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CartOperatorService} from './../services/cart-operator.service'
 import { Element} from './../Models/models'
+import { Router, ActivatedRoute } from '@angular/router';
 
 
 export interface Liked{
   id: number,
 
 }
+
+
 
 
 
@@ -19,14 +22,36 @@ export interface Liked{
 
 export class GridComponent implements OnInit {
 
-  @Input() element? : Element[]
+  disableControl: boolean[] =[]
+
+  liked_color: string [] = []
+
+  bought_color: string [] = []
+
+  bought_qunatity: number[] = []
 
   elements: Element[]
 
-  constructor(private cart: CartOperatorService) { }
+  sellerID : number = null
+
+  tableNumber: number = null
+
+  constructor(private cart: CartOperatorService, public router: Router, public route: ActivatedRoute) {
+
+    this.route.queryParams.subscribe(params => {
+      this.sellerID = params.sellerID;
+      this.tableNumber = params.tableNumber;
+      this.cart.setHttpParamteres(this.tableNumber,this.sellerID)
+
+  });
+  }
 
 
   ngOnInit(): void {
+
+    console.log("SellerID:",this.sellerID)
+    console.log("tableNumber:",this.tableNumber)
+
     this.elements  =
      [
       {
@@ -62,17 +87,71 @@ export class GridComponent implements OnInit {
 
     ]
 
+    this.elements.forEach(el=>{
+      this.disableControl.push(false);
+      this.liked_color.push("null")
+      this.bought_color.push("null")
+      this.bought_qunatity.push(0)
+
+
+    }
+     )
+
+
+
+    console.log(this.disableControl)
+
+
+
   }
 
 
-  onAddToCart(el_){
+
+
+  onAddToCart(el_,i){
+
     this.cart.addToCart(el_)
+
+
+
+    console.log("GROUPED BY", this.groupBy()[el_.id].length)
+
+    this.bought_qunatity[i] = this.groupBy()[el_.id].length
+
   }
 
-  onAddToWished(el_){
+  onAddToWished(el_,i){
 
-    this.cart.addToWishes(el_)
+    console.log('Show current element', el_)
 
+    if(this.liked_color[i]==="null"){
+
+      this.liked_color[i]="warn"
+
+      this.cart.addToWishes(el_)
+
+    }else{
+      this.liked_color[i]="null"
+
+      this.cart.removeFromWishes(el_)
+
+    }
   }
+
+  groupBy(id='id') {
+    return this.cart.cart.reduce((acc, obj) => {
+       const key = obj[id];
+       if (!acc[key]) {
+          acc[key] = [];
+       }
+       // Add object to list for given key's value
+       acc[key].push(obj);
+       return acc;
+    }, {});
+ }
+
+
+
+
 
 }

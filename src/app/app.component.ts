@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -15,7 +16,7 @@ export class AppComponent {
     console.log('emitted')
   }
 
-  constructor(private _snackBar : MatSnackBar ){}
+  constructor(private _snackBar : MatSnackBar , public router: Router){}
 
 
 

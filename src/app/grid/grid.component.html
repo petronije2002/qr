@@ -4,30 +4,34 @@
   <mat-grid-list [gutterSize]="7" [cols]="2" rowHeight="1:1.5">
     <mat-grid-tile *ngFor="let el  of elements; let i=index">
 
-      <mat-grid-tile-header fxLayout="row" fxLayoutAlign="end center" class="header" >
+      <mat-grid-tile-header fxLayout="row" fxLayoutAlign="end center" class="header">
 
-        <div fxFlex="1 1 90" class="title"><div> {{el.title}}</div>
-
+        <div fxFlex="1 1 90" class="title">
+          <div> {{el.title}}</div>
         </div>
 
-        <div fxFlex > {{el.price  |  currency:'EUR'}}</div>
+        <div fxFlex> {{el.price  |  currency:'EUR'}}</div>
 
       </mat-grid-tile-header>
 
-
-
-      <div fxLayout="row" fxLayoutAlign="center" >
-
+      <div fxLayout="row" fxLayoutAlign="center">
         <div fxFlex="2 2 auto" class="img1">
+          <a [routerLink]="['/product-view']">
           <img mat-card-image src="{{el.link}}" alt="Product photo">
 
+          </a>
 
         </div>
       </div>
 
       <mat-grid-tile-footer fxLayout="row">
-        <div  fxFlex><a mat-button fxFlex (click)="onAddToCart(el)"><mat-icon>add_shopping_cart</mat-icon></a></div>
-        <div  fxFlex><a mat-button fxFlex (click)="onAddToWished(el)"><mat-icon>favorite_border</mat-icon></a></div>
+        <div fxFlex><a mat-button fxFlex (click)="onAddToCart(el,i)">
+            <mat-icon [color]="bought_color[i]" matBadge="{{bought_qunatity[i]}}"   matBadgeSize="medium" >add_shopping_cart</mat-icon>
+          </a></div>
+
+        <div fxFlex><button mat-button fxFlex (click)="onAddToWished(el,i)">
+            <mat-icon [color]="liked_color[i]">favorite</mat-icon>
+          </button></div>
       </mat-grid-tile-footer>
 
 

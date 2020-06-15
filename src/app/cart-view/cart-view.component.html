@@ -1,0 +1,170 @@
+<div class="headGrid">
+
+
+
+  <mat-grid-list [gutterSize]="2" [cols]="8" rowHeight="1:1">
+
+    <mat-grid-tile [colspan]="3" class="head">
+
+      <mat-grid-tile-header>
+        Product image
+      </mat-grid-tile-header>
+
+
+    </mat-grid-tile>
+
+    <mat-grid-tile [colspan]="2" class="head">
+
+      <mat-grid-tile-header>
+        Name
+      </mat-grid-tile-header>
+
+    </mat-grid-tile>
+
+
+
+    <mat-grid-tile [colspan]="1" class="head">
+
+      <mat-grid-tile-header>
+        Tax
+      </mat-grid-tile-header>
+    </mat-grid-tile>
+
+    <mat-grid-tile [colspan]="2" class="head">
+
+      <mat-grid-tile-header>
+        Price
+      </mat-grid-tile-header>
+    </mat-grid-tile>
+
+
+  </mat-grid-list>
+
+
+
+
+<div *ngIf="cartList.length===0">
+
+  Your cart is empty
+
+</div>
+
+<div>
+
+
+  <mat-grid-list [gutterSize]="7" [cols]="8" rowHeight="1:3" *ngFor="let el of summedArray; let i=index">
+
+    <div class="row">
+
+      <mat-grid-tile [colspan]="3">
+        <img src="{{el[0][0].link}}" alt="Photo" height="100%">
+
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="2">
+
+        <div class="spec123">
+
+          {{el[0][0].title}}
+        </div>
+
+        <div><a  mat-button>
+          <mat-icon matBadge="2" matBadgeSize="small" matBadgeColor="primary">add_circle_outline</mat-icon>
+        </a></div>
+
+
+
+      <div><a  mat-button>
+          <mat-icon matBadge="3" matBadgeSize="small" matBadgeColor="primary">remove_circle_outline</mat-icon>
+        </a></div>
+
+
+
+
+
+
+
+
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="1">
+
+        <div class="price">
+
+          10%
+        </div>
+
+
+
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="2">
+
+        <div class="price">
+
+          {{el[0][0].price |  currency:'EUR'}}
+
+          <div class="x"> x {{el[1]}}</div>
+          <div > = </div>
+          <br>
+
+
+          <div class>{{ (el[0][0].price*el[1]).toFixed(2) | currency:'EUR'}}</div>
+
+
+        </div>
+
+      </mat-grid-tile>
+
+
+
+
+      <div class="headGrid123">
+
+
+
+        <mat-grid-list [gutterSize]="2" [cols]="8" rowHeight="1:0.5">
+
+          <mat-grid-tile [colspan]="3">
+
+
+
+
+
+          </mat-grid-tile>
+
+          <mat-grid-tile [colspan]="2">
+
+
+
+          </mat-grid-tile>
+
+
+
+          <mat-grid-tile [colspan]="1">
+
+
+          </mat-grid-tile>
+
+          <mat-grid-tile [colspan]="2">
+
+
+          </mat-grid-tile>
+
+
+        </mat-grid-list>
+
+      </div>
+
+
+    </div>
+
+  </mat-grid-list>
+
+
+
+
+
+</div>
+
+</div>

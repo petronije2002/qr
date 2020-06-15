@@ -12,6 +12,10 @@ export class CartOperatorService implements OnInit{
 
   cart: Element[]=[]
 
+
+  tableNumber: number = null
+  sellerID: number= null
+
   // public cartObserver: Observable<Element[]>
 
   public cartSubscription : Subscription
@@ -22,9 +26,6 @@ export class CartOperatorService implements OnInit{
 
   ngOnInit(){
 
-
-
-
   }
 
   cartObserver: Observable<Element[]>  =  Observable.create(observer=>{
@@ -33,6 +34,28 @@ export class CartOperatorService implements OnInit{
     },500)
   })
 
+  wishListObserver: Observable<Element[]>  =  Observable.create(observer=>{
+    setInterval(()=>{
+      observer.next(this.wishes)
+    },500)
+  })
+
+
+  removeFromWishes(el){
+
+    console.log('this is what service received', el)
+
+    console.log('current wishes', this.wishes)
+
+    this.wishes = this.wishes.filter(obj=>obj.id !== el.id)
+
+    console.log('After removing', this. wishes)
+    // let temp_wishes = this.wishes.filter(x=>x.id != el.id)
+
+    console.log("removed from wishes", this.wishes)
+
+  }
+
 
   get cqrts (){
     return this.cartObserver
@@ -40,17 +63,8 @@ export class CartOperatorService implements OnInit{
 
 
   addToCart(element){
-
-
     this.cart.push(element)
-
-
-
-
-
     console.log("This is the cart", this.cart)
-
-
   }
 
   addToWishes(element){
@@ -67,4 +81,30 @@ export class CartOperatorService implements OnInit{
 
     this.cart = this.cart.filter((obj)=>{obj.id !== el_.id})
   }
+
+  setHttpParamteres(tableNumber,sellerID){
+
+    this.sellerID=sellerID
+    this.tableNumber = tableNumber
+  }
+
+
+  getHttpParameters(){
+
+    return this.sellerID,this.tableNumber
+  }
+
+
+  groupBy(id='id') {
+    return this.cart.reduce((acc, obj) => {
+       const key = obj[id];
+       if (!acc[key]) {
+          acc[key] = [];
+       }
+       // Add object to list for given key's value
+       acc[key].push(obj);
+       return acc;
+    }, {});
+  }
+
 }
