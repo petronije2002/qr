@@ -68,15 +68,19 @@
           {{el[0][0].title}}
         </div>
 
-        <div><a  mat-button>
-          <mat-icon matBadge="2" matBadgeSize="small" matBadgeColor="primary">add_circle_outline</mat-icon>
-        </a></div>
+        <div fxFlexLayout="row" fxFlexAlign="end end" class="addRemButtons">
+
+          <div fxFlex><a mat-button (click)="addToCartBilling(el[0][0],i)">
+              <mat-icon >add_circle_outline</mat-icon>
+            </a></div>
 
 
 
-      <div><a  mat-button>
-          <mat-icon matBadge="3" matBadgeSize="small" matBadgeColor="primary">remove_circle_outline</mat-icon>
-        </a></div>
+          <div fxFlex><a mat-button (click)="removeToCartBilling(el[0][0],i)">
+              <mat-icon >remove_circle_outline</mat-icon>
+            </a></div>
+
+        </div>
 
 
 

@@ -58,13 +58,13 @@ export class GridComponent implements OnInit {
       id : 0,
       title: "Titlefsfd fdssfsdf",
       price: 30,
-      link: "https://picsum.photos/600"
+      link: "https://picsum.photos/1202"
       },
       {
         id : 1,
         title: "Title1",
         price: 30,
-        link: "https://picsum.photos/700"
+        link: "https://picsum.photos/1201"
         },
         {
           id : 2,
@@ -98,13 +98,43 @@ export class GridComponent implements OnInit {
      )
 
 
+     this.elements.forEach((el,ind)=>{
+      if(this.cart.cart.filter(x=>x.id ===el.id)){
+        this.bought_qunatity[ind] = this.cart.cart.filter(x=>x.id ===el.id).length
+      }
+     })
+
+     let tmp_wish_keys =[]
+
+     this.cart.wishes.forEach(el=>
+      tmp_wish_keys.push(el.id))
+
+      console.log("wishes", this.cart.wishes)
+
+
+     this.elements.forEach((el,ind)=>{
+
+      console.log("element is ", el, "id", el.id)
+
+
+      console.log("wishes keys", tmp_wish_keys)
+
+      if(tmp_wish_keys.indexOf(el.id)>-1){
+
+
+        this.liked_color[ind]="warn"
+      }else{
+        this.liked_color[ind]="null"
+      }
+     })
+
+
+
+
 
     console.log(this.disableControl)
 
-
-
   }
-
 
 
 

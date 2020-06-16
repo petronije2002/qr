@@ -6,6 +6,9 @@
 
   <footer class="footer123" fxLayout="row">
 
+    <div fxFlex  ><a  mat-button   matTooltip="Invite Officer" fxFlex (click)="router.navigate(['/grid']);">Menu</a></div>
+
+
     <div  fxFlex><a mat-button   matTooltip="Payment"  (click)="router.navigate(['/cart-view']);" fxFlex><mat-icon> payment</mat-icon></a></div>
     <div  fxFlex><a mat-button   matTooltip="Invite Officer" fxFlex (click)="openSnackBar('Call Service?', 'OK')"><mat-icon>emoji_people</mat-icon></a></div>
 

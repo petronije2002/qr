@@ -18,6 +18,8 @@ export class CartViewComponent implements OnInit, OnDestroy {
   summedArray = []
 
 
+
+
   constructor(public srv: CartOperatorService) { }
 
   ngOnInit(): void {
@@ -25,6 +27,7 @@ export class CartViewComponent implements OnInit, OnDestroy {
    this.subscribeToCart = this.srv.cartObserver.subscribe(resp=>
       this.cartList = resp)
 
+    this.summedArray = []
 
     this.summedUp = this.srv.groupBy()
 
@@ -39,4 +42,29 @@ export class CartViewComponent implements OnInit, OnDestroy {
   ngOnDestroy(){
     this.subscribeToCart.unsubscribe()
   }
+
+
+  addToCartBilling(el,i){
+
+    this.srv.addToCart(el);
+
+    this.summedArray[i][1] = this.summedArray[i][1] + 1
+
+  }
+
+
+  removeToCartBilling(el,i){
+
+    this.srv.removeFromCart(el)
+
+    this.summedArray[i][1] = this.summedArray[i][1] - 1
+
+
+    if(this.summedArray[i][1]===0){
+
+      this.summedArray.splice(i,1)
+    }
+
+  }
+
 }

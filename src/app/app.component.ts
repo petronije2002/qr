@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {MatSnackBar} from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -8,8 +8,10 @@ import { Router } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent  implements OnInit{
   title = 'template';
+
+  backButtonDisabled = true
 
 
   processAdd(){
@@ -25,6 +27,18 @@ export class AppComponent {
       duration: 3500,
     });
   }
+
+  ngOnInit(){
+
+    this.backButtonDisabled = true
+
+    if(this.router.url==="/cart-view'"){
+
+      this.backButtonDisabled = false
+    }
+  }
+
+
 }
 
 

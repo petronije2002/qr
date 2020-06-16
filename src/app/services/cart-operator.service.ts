@@ -79,7 +79,19 @@ export class CartOperatorService implements OnInit{
 
   removeFromCart(el_){
 
-    this.cart = this.cart.filter((obj)=>{obj.id !== el_.id})
+    let tmp_indx = []
+
+    // find all indexes in  cart, at which you can find requested el
+
+    this.cart.forEach(el=>{
+      if(el.id === el_.id){
+        tmp_indx.push(el.id)
+      }
+    }
+      )
+    this.cart.splice(this.cart.indexOf(tmp_indx[0]), 1);
+
+
   }
 
   setHttpParamteres(tableNumber,sellerID){
