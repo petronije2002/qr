@@ -26,11 +26,11 @@
 
       <mat-grid-tile-footer fxLayout="row">
         <div fxFlex><a mat-button fxFlex (click)="onAddToCart(el,i)">
-            <mat-icon [color]="bought_color[i]" matBadge="{{bought_qunatity[i]}}"   matBadgeSize="medium" >add_shopping_cart</mat-icon>
+            <mat-icon [color]="bought_color[i]" matBadge="{{bought_qunatity[i]}}"   matBadgeSize="medium"  >add_shopping_cart</mat-icon>
           </a></div>
 
         <div fxFlex><button mat-button fxFlex (click)="onAddToWished(el,i)">
-            <mat-icon [color]="liked_color[i]">favorite</mat-icon>
+            <mat-icon [color]="liked_color[i]" class="favoriteIcon" >favorite</mat-icon>
           </button></div>
       </mat-grid-tile-footer>
 

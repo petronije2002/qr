@@ -74,7 +74,7 @@
 
   position: absolute ;
 
-  right: 2px;
+  right: 3px;
   color:rgb(70, 20, 20) ;
 
 
@@ -84,4 +84,9 @@
 .addRemButtons{
   position: relative;
   bottom: 3px
+}
+
+.equalSign{
+  position: relative;
+  right: -33px
 }

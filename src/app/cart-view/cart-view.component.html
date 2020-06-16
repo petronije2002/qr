@@ -108,9 +108,15 @@
 
           {{el[0][0].price |  currency:'EUR'}}
 
-          <div class="x"> x {{el[1]}}</div>
-          <div > = </div>
+          <div class="x"> x {{el[1]}} </div>
+
           <br>
+          <br>
+          <div class="equalSign"> = </div>
+
+
+
+
 
 
           <div class>{{ (el[0][0].price*el[1]).toFixed(2) | currency:'EUR'}}</div>
